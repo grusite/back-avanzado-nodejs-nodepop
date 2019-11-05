@@ -3,7 +3,7 @@
   <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
     <form name="filtro" action="" method="GET">
       <div class="form-group">
-        <label for="nombre">¿Qué estás buscando?</label>
+        <label for="nombre"><%= __('Buscando') %></label>
         <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="emailHelp"
           placeholder="iPhone X" <% if(nombre != '' && nombre != 'undefined') __append('value="'+nombre+'"') %>>
         <small id="emailHelp" class="form-text text-muted">Encontraremos artículos que empiecen con lo que quieras. Ojo,
@@ -13,14 +13,14 @@
         <div class="form-check">
           <input class="form-check-input" type="radio" name="venta" id="true" value="true"
             <% if(venta == 'true') __append('checked') %> <label class="form-check-label" for="true">
-          Quiero comprar
+              <%= __('Quiero comprar') %>
           </label>
         </div>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="venta" id="false" value="false"
             <% if(venta == 'false') __append('checked') %>>
           <label class="form-check-label" for="false">
-            Quiero vender
+            <%= __('Quiero vender') %>
           </label>
         </div>
       </div>
