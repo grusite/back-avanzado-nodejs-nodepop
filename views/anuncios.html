@@ -1,0 +1,123 @@
+<% include head.html %>
+<div class="col-lg-9">
+  <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+    <form name="filtro" action="" method="GET">
+      <div class="form-group">
+        <label for="nombre">¿Qué estás buscando?</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="emailHelp"
+          placeholder="iPhone X" <% if(nombre != '' && nombre != 'undefined') __append('value="'+nombre+'"') %>>
+        <small id="emailHelp" class="form-text text-muted">Encontraremos artículos que empiecen con lo que quieras. Ojo,
+          case sensitive.</small>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="venta" id="true" value="true"
+            <% if(venta == 'true') __append('checked') %> <label class="form-check-label" for="true">
+          Quiero comprar
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="venta" id="false" value="false"
+            <% if(venta == 'false') __append('checked') %>>
+          <label class="form-check-label" for="false">
+            Quiero vender
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="precio">¿Qué rango de precio?</label>
+        <select name="precio" id="precio" class="custom-select">
+          <option value="" <% if(precio == '') __append('selected="selected"') %>>Sin límite de precio</option>
+          <option value="-50" <% if(precio == '-50') __append('selected="selected"') %>>De 0 a 50 €</option>
+          <option value="50-100" <% if(precio == '50-100') __append('selected="selected"') %>>De 50 a 100 €</option>
+          <option value="100-150" <% if(precio == '100-150') __append('selected="selected"') %>>De 100 a 150 €</option>
+          <option value="150-200" <% if(precio == '150-200') __append('selected="selected"') %>>De 150 a 200 €</option>
+          <option value="200-" <% if(precio == '200-') __append('selected="selected"') %>>Más de 200 €</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="limit">Número de anuncios por página:</label>
+        <% console.log('limit', limit) %>
+        <select name="limit" id="limit" class="custom-select">
+          <option value="3" <% if(limit == '3') __append('selected="selected"') %>>3</option>
+          <option value="6" <% if(limit == '6') __append('selected="selected"') %>>6</option>
+          <option value="9" <% if(limit == '9') __append('selected="selected"') %>>9</option>
+          <option value="" <% if(limit == '' || limit == '100000000') __append('selected="selected"') %>>Todo</option>
+        </select>
+      </div>
+      <input type="hidden" name="start" value="<%= start %>" />
+      <button type="submit" class="btn btn-primary">BUSCAR</button>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 mb-12">
+      <p>Hemos encontrado <%= numAnuncios %> artículos:</p>
+    </div>
+  </div>
+  <div class="row">
+    <%
+          anuncios.forEach(anuncio => {
+            let txtVenta = 'En venta';
+            let txtPrecio = 'Precio';
+            if(!anuncio.venta){
+              txtVenta = 'Se busca';
+              txtPrecio = 'Pagaría';
+            }
+          %>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="/images/<%= anuncio.foto %>" alt="<%= anuncio.nombre %>"></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#"><%= anuncio.nombre %></a>
+          </h4>
+          <h5><%= txtPrecio + ': ' + anuncio.precio + ' €' %></h5>
+          <p class="card-text"><%= txtVenta %></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+        </div>
+      </div>
+    </div>
+    <%
+          });
+          %>
+    <!-- /.row -->
+    <%
+    if(numAnuncios > limit){
+      let paginas = Math.ceil(numAnuncios/limit);
+      const paginaActual = Math.ceil(start/limit)+1;
+      %>
+    <div class="row">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item<% if(paginaActual == 1) __append(' disabled') %>">
+            <a class="page-link" href="/anuncios?nombre=<%= nombre %>&tag=<%= tag %>&venta=<%= venta %>&precio=<%= precio %>&start=0&limit=<%= limit %>&" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <%
+          for(let i=1; i <= paginas; i++){
+          %>
+          <li class="page-item<% if(paginaActual == i) __append(' disabled') %>"><a class="page-link" href="/anuncios?nombre=<%= nombre %>&tag=<%= tag %>&venta=<%= venta %>&precio=<%= precio %>&start=<%= limit * (i-1) %>&limit=<%= limit %>&"><%= i %></a></li>
+          <%
+          }
+          %>
+          <li class="page-item<% if(paginaActual == paginas) __append(' disabled') %>">
+            <a class="page-link" href="/anuncios?nombre=<%= nombre %>&tag=<%= tag %>&venta=<%= venta %>&precio=<%= precio %>&start=<%= limit + start %>&limit=<%= limit %>&" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <% } %>
+  </div>
+  <!-- /.col-lg-9 -->
+</div>
+<!-- /.row -->
+</div>
+<!-- /.container -->
+<% include footer.html %>

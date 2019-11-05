@@ -1,0 +1,123 @@
+{
+    "anuncios": [
+        {
+            "nombre" : "Bicicleta",
+            "venta" : true,
+            "precio" : 130.15,
+            "foto" : "bici.jpg",
+            "tags" : [ 
+                "lifestyle", 
+                "motor"
+            ]
+        },
+        {
+            "nombre" : "iPhone 3GS",
+            "venta" : false,
+            "precio" : 50.0,
+            "foto" : "iphone.jpg",
+            "tags" : [ 
+                "lifestyle", 
+                "mobile"
+            ]
+        },
+        {
+            "nombre" : "Motosierra Columbus XT300",
+            "venta" : true,
+            "precio" : 250.0,
+            "foto" : "motosierra.jpg",
+            "tags" : [ 
+                "home", 
+                "garden"
+            ]
+        },
+        {
+            "nombre" : "MacBook Pro Mid2011",
+            "venta" : false,
+            "precio" : 190.0,
+            "foto" : "macbook.jpg",
+            "tags" : [ 
+                "computer", 
+                "home"
+            ]
+        },
+        {
+            "nombre" : "Televisión LCD 42\" FHD",
+            "venta" : true,
+            "precio" : 140.0,
+            "foto" : "tv.jpg",
+            "tags" : [ 
+                "home", 
+                "tv"
+            ]
+        },
+        {
+            "nombre" : "Ajedrez",
+            "venta" : true,
+            "precio" : 60.0,
+            "foto" : "ajedrez.jpg",
+            "tags" : [ 
+                "home", 
+                "games"
+            ]
+        },
+        {
+            "nombre" : "Bicicleta Montaña",
+            "venta" : false,
+            "precio" : 90,
+            "foto" : "bici2.jpg",
+            "tags" : [ 
+                "lifestyle"
+            ]
+        },
+        {
+            "nombre" : "iPhone 8",
+            "venta" : true,
+            "precio" : 400.0,
+            "foto" : "iphone2.jpg",
+            "tags" : [ 
+                "mobile"
+            ]
+        },
+        {
+            "nombre" : "Motosierra Martika",
+            "venta" : true,
+            "precio" : 350.0,
+            "foto" : "motosierra2.jpg",
+            "tags" : [ 
+                "home", 
+                "garden"
+            ]
+        },
+        {
+            "nombre" : "iMac 2013",
+            "venta" : true,
+            "precio" : 590.0,
+            "foto" : "imac.jpg",
+            "tags" : [ 
+                "computer", 
+                "home"
+            ]
+        },
+        {
+            "nombre" : "Televisión Samsung LCD 48\" FHD",
+            "venta" : true,
+            "precio" : 440.0,
+            "foto" : "tv.jpg",
+            "tags" : [ 
+                "home", 
+                "tv",
+                "lifestyle"
+            ]
+        },
+        {
+            "nombre" : "Ajedrez",
+            "venta" : false,
+            "precio" : 20.0,
+            "foto" : "ajedrez.jpg",
+            "tags" : [ 
+                "home", 
+                "games"
+            ]
+        }
+    ]
+}

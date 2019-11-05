@@ -1,0 +1,44 @@
+# NODEPOP
+API práctica del módulo BACKEND CON NODE.JS
+## Iniciar Mongo:
+```
+./bin/mongod --dbpath ./data/db --directoryperdb
+```
+## Instalar colección y juego de datos:
+```
+npm run installDB
+```
+## Iniciar servidor:
+Hay 3 posibilidades:
+```
+npm run dev
+nodemon start
+nodemon dev
+```
+
+## EJEMPLOS DE LLAMADA
+Lista de anuncios: API
+```
+http://localhost:3000/apiv1/anuncios?tag=mobile,motor&nombre=&start=0&limit=100&sort=_id&venta=false&precio=-50
+```
+Listado de tags
+```
+http://localhost:3000/apiv1/tags
+```
+Nuevo anuncio
+```
+http://localhost:3000/apiv1/nuevo
+```
+Variables BODY:
+nombre (p.e. Huawei P20)
+tags (p.e. mobile)
+precio (p.e. 450)
+foto (p.e. huawei.jpg)
+venta (p.e. true)
+
+Lista de anuncios: WEB
+```
+http://localhost:3000/anuncios?tag=mobile,motor&nombre=ip&start=2&limit=2&sort=precio&venta=false&precio=-50
+```
+Notas:
+tag: etiquetas, separar con comas.
