@@ -2,5 +2,9 @@
   "EXAMPLE": "EXAMPLE",
   "Quiero comprar": "I want to buy",
   "Quiero vender": "I want to sell",
-  "Buscando": "What do you want?"
+  "Buscando": "What do you want?",
+  "%s Mouse": {
+    "one": "%s Mouse",
+    "other": "%s Mice"
+  }
 }
